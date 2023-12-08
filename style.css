@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
 }
+/*spill box*/
 #game{
     width: 400px;
     height: 500px;
@@ -9,27 +10,30 @@
     margin: auto;
     overflow: hidden;
 }
-#block{
-    width: 50px;
-    height: 500px;
-    background-color: black;
-    position: relative;
-    left: 400px;
-    animation: block 2s infinite linear;
-}
-@keyframes block{
-    0%{left:400px}
-    100%{left:-50px}
-}
-#hole{
-    width: 50px;
-    height: 150px;
-    background-color: white;
-    position: relative;
-    left: 400px;
-    top: -500px;
-    animation: block 2s infinite linear;
-}
+/*spill vegger*/
+    #block{
+        width: 50px;
+        height: 500px;
+        background-color: black;
+        position: relative;
+        left: 400px;
+        animation: block 2s infinite linear;
+    }
+    @keyframes block{
+        0%{left:400px}
+        100%{left:-50px}
+    }
+    #hole{
+        width: 50px;
+        height: 150px;
+        background-color: white;
+        position: relative;
+        left: 400px;
+        top: -500px;
+        animation: block 2s infinite linear;
+    }
+/*spill vegg over*/
+/*spill karakter*/
 #character{
     width: 20px;
     height: 20px;
@@ -39,81 +43,79 @@
     border-radius: 50%;
 }
 /* Reset some default styles */
-body, h2, form, table {
+body, h2, form {
     margin: 0;
     padding: 0;
 }
+/*koden under er for styling av form*/
+    body {
+        font-family: Arial, sans-serif;
+    }
 
-body {
-    font-family: Arial, sans-serif;
-}
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-.container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    input[type="submit"] {
+        background-color: #1E90FF;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: lightblue;
+    }
 
-form {
-    margin-bottom: 20px;
-}
+    h2 {
+        margin-top: 20px;
+        color: #333;
+    }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-}
+    p {
+        margin: 5px 0;
+        color: #555;
+    }
 
-input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
+    .button{
+        background-color: #1E90FF;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 
-input[type="password"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-input[type="submit"] {
-    background-color: #1E90FF;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-input[type="submit"]:hover {
-    background-color: lightblue;
-}
-
-h2 {
-    margin-top: 20px;
-    color: #333;
-}
-
-p {
-    margin: 5px 0;
-    color: #555;
-}
-.button{
-    background-color: #1E90FF;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.button:hover{
-    background-color: lightblue;
-}
+    .button:hover{
+        background-color: lightblue;
+    }
+/*form style slutt*/
