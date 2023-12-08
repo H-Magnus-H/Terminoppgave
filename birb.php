@@ -13,49 +13,49 @@
     </div>
     <div id="score">Score: 0</div>
     <?php
-        session_start(); // Start the session to access session variables
+        session_start(); 
 
-        // Database connection parameters
+        // Database tilkoblingsparametere
         $servername = "localhost";
         $username = "root";
-        $password = "IMKuben1337!";
-        $database = "test"; // Database name, replace it with your actual database name
-        $tableName = "users"; // Replace it with your actual table name
+        $password = "IMKuben1337";
+        $database = "test"; 
+        $tableName = "users"; 
 
-        // Check if the user is logged in (replace 'username' with the actual session variable name)
+        // Sjekk om brukeren er logget inn 
         if(isset($_SESSION['username'])) {
-            $loggedInUsername = $_SESSION['username']; // Get the logged-in username from the session
+            $loggedInUsername = $_SESSION['username']; // Hent brukernavnet til den innloggede brukeren fra sesjonen
 
-            // Create a connection to the database
+            // Opprett en tilkobling til databasen
             $conn = new mysqli($servername, $username, $password, $database);
 
-            // Check the connection
+            // Sjekk tilkoblingen
             if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+                die("Tilkobling mislyktes: " . $conn->connect_error);
             }
 
-            // Query to select the score for the logged-in user
+            // Spørring for å velge poengsummen for den innloggede brukeren
             $sql = "SELECT score FROM $tableName WHERE username = '$loggedInUsername'";
 
-            // Execute the query
+            // Utfør spørringen
             $result = $conn->query($sql);
 
-            // Check if the query was successful
+            // Sjekk om spørringen var vellykket
             if ($result->num_rows > 0) {
-                // Output data of the first row (assuming username is unique)
+                // Hent data fra første rad 
                 $row = $result->fetch_assoc();
-                // Display the score
+                // Vis poengsummen
                 echo "Highscore for $loggedInUsername: " . $row["score"];
             } else {
-                echo "No results found for username: $loggedInUsername";
+                echo "Ingen resultater funnet for brukernavn: $loggedInUsername";
             }
 
-        // Close the connection
-        $conn->close();
+            // Lukk tilkoblingen
+            $conn->close();
         } else {
-        // Redirect to login page if user is not logged in
-        header("Location: login.php");
-        exit();
+            // Videresend til innloggingssiden hvis brukeren ikke er logget inn
+            header("Location: login.php");
+            exit();
         }
     ?>
 </body>
