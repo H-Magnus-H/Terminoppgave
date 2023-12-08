@@ -7,47 +7,47 @@
 </head>
 <body>
 <?php
-session_start(); // Start the session to access session variables
+session_start(); // Starter økten for å få tilgang til sesjonsvariabler
 
 if(isset($_POST['submit'])){
-    //Gjøre om POST-data til variabler
+    // Konverterer POST-data til variabler
     $username = $_POST['brukernavn'];
     $password = md5($_POST['passord']);
     
-    //Koble til databasen
+    // Kobler til databasen
     $dbc = mysqli_connect('localhost', 'root', 'IMKuben1337!', 'test')
-      or die('Error connecting to MySQL server.');
-    // Query to retrieve user ID based on login credentials
+      or die('Feil ved tilkobling til MySQL-serveren.');
+    // Spørring for å hente bruker-ID basert på påloggingsinformasjon
     $sql = "SELECT id FROM users WHERE username = '$username' AND password = '$password'";
     $userID = $dbc->query($sql);
 
     if ($userID->num_rows > 0) {
-        // User authenticated
+        // Bruker autentisert
         $row = $userID->fetch_assoc();
 
-        // Store the user ID in a session variable
+        // Lagrer bruker-ID i en sesjonsvariabel
         $_SESSION['user_id'] = $row['id'];
     }
-    //Gjøre klar SQL-strengen
+    // Forbereder SQL-strengen
     $query = "SELECT username, password from users where username='$username' and password='$password'";
     
-    //Utføre spørringen
+    // Utfører spørringen
     $result = mysqli_query($dbc, $query)
-      or die('Error querying database.');
+      or die('Feil ved spørring til databasen.');
     
-    //Sjekke om spørringen gir resultater
+    // Sjekker om spørringen gir resultater
     if($result->num_rows > 0){
-        //Gyldig login
-        $_SESSION['username'] = $username; // Store username in session variable
+        // Gyldig pålogging
+        $_SESSION['username'] = $username; // Lagrer brukernavn i sesjonsvariabel
         header('location: birb.php');
     } else {
-        //Ugyldig login
+        // Ugyldig pålogging
         header('location: index.html');
-        echo "<script>alert('Wrong username or password');</script>";    
+        echo "<script>alert('Feil brukernavn eller passord');</script>";    
         
       }
 
-    //Koble fra databasen
+    // Kobler fra databasen
     mysqli_close($dbc);
 }
 ?>
