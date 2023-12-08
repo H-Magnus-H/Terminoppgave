@@ -26,7 +26,7 @@
             $password = md5($_POST['passord']);
             
             //Koble til databasen
-            $dbc = mysqli_connect('localhost', 'root', '', 'test')
+            $dbc = mysqli_connect('localhost', 'root', 'IMKuben1337!', 'test')
               or die('Error connecting to MySQL server.');
             
             //Gjøre klar SQL-strengen
