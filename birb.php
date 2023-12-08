@@ -18,7 +18,7 @@
         // Database connection parameters
         $servername = "localhost";
         $username = "root";
-        $password = "";
+        $password = "IMKuben1337!";
         $database = "test"; // Database name, replace it with your actual database name
         $tableName = "users"; // Replace it with your actual table name
 
